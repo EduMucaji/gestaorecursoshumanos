@@ -5,6 +5,8 @@
  */
 package rh.controlo;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
@@ -18,20 +20,30 @@ import rh.modelo.Funcionario;
 @RequestScoped
 public class FuncionarioMBean {
 
-    Funcionario funcionario = new Funcionario();
+    Funcionario funcionario1 = new Funcionario("Eduardo", "Mucaji","Operação de Serviços", 31, 100000.00);
+    Funcionario funcionario2 = new Funcionario("Fua", "Landu","Operação de Acesso", 30, 100000.00);
+    Funcionario funcionario3 = new Funcionario("Pedro", "Alberto","Operação de Core", 29, 100000.00);
+    
+    
+    List<Funcionario> funcionarios = new ArrayList();
 
     @PostConstruct
     public void init() {
+        funcionarios.add(funcionario1);
+        funcionarios.add(funcionario2);
+        funcionarios.add(funcionario3);
 
     }
 
-    public Funcionario getFuncionario() {
-        return funcionario;
+    public List<Funcionario> getFuncionarios() {
+        return funcionarios;
     }
 
-    public void setFuncionario(Funcionario funcionario) {
-        this.funcionario = funcionario;
+    public void setFuncionarios(List<Funcionario> funcionarios) {
+        this.funcionarios = funcionarios;
     }
+
+   
 
     public String guardar() {
 
